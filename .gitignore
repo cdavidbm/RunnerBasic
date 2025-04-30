@@ -46,3 +46,6 @@ saved_game.json
 *.tmp
 *.bak
 *.swp
+
+# Code Runner
+tempCodeRunnerFile.py
