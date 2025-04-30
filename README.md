@@ -1,4 +1,4 @@
-# Corredor de Protaígenas
+# Runner
 
 Un juego de plataformas desarrollado con Pygame Zero donde controlas un personaje que debe evitar obstáculos mientras corre.
 
@@ -56,7 +56,3 @@ PyGame Zero/
 ## 🎨 Créditos
 
 Desarrollado como proyecto educativo para Kodland.
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.

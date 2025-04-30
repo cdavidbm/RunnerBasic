@@ -4,7 +4,7 @@ from pgzero.builtins import Actor, animate, keyboard
 
 WIDTH = 600
 HEIGHT = 300
-TITLE = "Corredor de protaígenas"
+TITLE = "Runner"
 FPS = 30
 
 prota = Actor("1", (50, 240), size=(120, 120))
