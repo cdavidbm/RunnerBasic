@@ -15,7 +15,7 @@ background = Actor("fondo")
 ground = Actor('ground', (550, 265))
 bat = Actor('bat', (550, 175))
 
-game_over = 0
+game_state = 0
 count = 0
 enemy = random.randint(1,2)
 speed = 5
@@ -46,13 +46,13 @@ def bats():
         bat.y = random.randint(120, 180)
 
 def draw():
-    if game_over == 0:
+    if game_state == 0:
         screen.fill("black")
         screen.blit('fondo', (bg_x, 0))
         screen.blit('fondo', (bg_x + background.width, 0))
         prota.draw()
         screen.draw.text(str(count), pos=(10, 10), color="white", fontsize = 24)
-    elif game_over == 1:
+    elif game_state == 1:
         background.draw()
         screen.draw.text('Press Enter', pos=(WIDTH/2 - 85, HEIGHT/2), color="red", fontsize=36, align='center')
     
@@ -62,7 +62,9 @@ def draw():
         bat.draw()
 
 def update(dt):
-    global new_image, count, game_over, speed, bg_x, indice
+    global new_image, count, game_state, speed, bg_x, indice
+    
+    sounds.ost.play()
     
     bg_x -= bg_speed
     if bg_x <= -background.width:
@@ -78,13 +80,13 @@ def update(dt):
     if indice == len(lista_de_img):
         indice = 0
     
-    if keyboard.RIGHT or keyboard.d:
+    if prota.x <= WIDTH and (keyboard.RIGHT or keyboard.d):
         prota.x += 5
-    if keyboard.LEFT or keyboard.a:
+    if prota.x >= 0 and (keyboard.LEFT or keyboard.a):
         prota.x -= 5
     
-    if game_over == 1 and keyboard.RETURN:
-        game_over = 0 
+    if game_state == 1 and keyboard.RETURN:
+        game_state = 0 
         count = 0
         prota.pos = (50, 240)
         ground.pos = (550, 265)
@@ -92,7 +94,7 @@ def update(dt):
         speed = 5
     
     if prota.colliderect(ground) or prota.colliderect(bat):
-        game_over = 1
+        game_state = 1
         
 def on_key_down(key):
     if keyboard.space or keyboard.up or keyboard.w:
